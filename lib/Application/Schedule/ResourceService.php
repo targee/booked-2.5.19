@@ -145,7 +145,7 @@ class ResourceService implements IResourceService
 			{
 				continue;
 			}
-
+			
 			if ($canAccess)
 			{
 

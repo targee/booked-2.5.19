@@ -76,7 +76,7 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 		<div id="header">
 			<div id="header-top">
 				<div id="signout">
-					{if $LoggedIn}
+					<!--{if $LoggedIn}
 						{translate key="SignedInAs"} {$UserName}
 						<br/>
 						<a
@@ -85,27 +85,32 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 						{translate key="NotSignedIn"}
 						<br/>
 						<a href="{$Path}index.php">{translate key="LogIn"}</a>
-					{/if}
+					{/if}-->
 				</div>
 			</div>
 			<div>
 				<ul id="nav" class="menubar">
 					{if $LoggedIn}
+						<li class="menubaritem"><a style='background:#AA0000'>Hi, {$UserName}</a></li>
 						<li class="menubaritem first"><a href="{$Path}{Pages::DASHBOARD}">{translate key="Dashboard"}</a></li>
 						<li class="menubaritem"><a href="{$Path}{Pages::PROFILE}">{translate key="MyAccount"}</a>
 							<ul>
 								<li class="menuitem"><a href="{$Path}{Pages::PROFILE}">{translate key="Profile"}</a></li>
 								<li class="menuitem"><a href="{$Path}{Pages::PASSWORD}">{translate key="ChangePassword"}</a></li>
-								<li class="menuitem"><a href="{$Path}{Pages::NOTIFICATION_PREFERENCES}">{translate key="NotificationPreferences"}</a></li>
+								<!--<li class="menuitem"><a href="{$Path}{Pages::NOTIFICATION_PREFERENCES}">{translate key="NotificationPreferences"}</a></li>-->
 								{if $ShowParticipation}
 									<li class="menuitem"><a href="{$Path}{Pages::PARTICIPATION}">{translate key="OpenInvitations"}</a></li>{/if}
 							</ul>
 						</li>
-						<li class="menubaritem"><a href="{$Path}{Pages::SCHEDULE}">{translate key="Schedule"}</a>
+						<li class="menubaritem"><a href="{$Path}{Pages::SCHEDULE}"><!--{translate key="Schedule"}-->唐鳳都在這</a>
 							<ul>
-								<li class="menuitem"><a href="{$Path}{Pages::SCHEDULE}">{translate key="Bookings"}</a></li>
-								<li class="menuitem"><a href="{$Path}{Pages::MY_CALENDAR}">{translate key="MyCalendar"}</a></li>
-								<li class="menuitem"><a href="{$Path}{Pages::CALENDAR}">{translate key="ResourceCalendar"}</a></li>
+                                <!--<li class="menuitem"><a href="{$Path}{Pages::SCHEDULE}?sid=13">A棟空間預約</a></li>
+                            	<li class="menuitem"><a href="{$Path}{Pages::SCHEDULE}?sid=14">B棟空間預約</a></li>
+                            	<li class="menuitem"><a href="{$Path}{Pages::SCHEDULE}?sid=5">中庭走廊空間預約</a></li>
+                            	<li class="menuitem"><a href="{$Path}{Pages::SCHEDULE}?sid=15">預約導覽</a></li>-->
+								<!--<li class="menuitem"><a href="{$Path}{Pages::SCHEDULE}">{translate key="Bookings"}</a></li>-->
+								<!--<li class="menuitem"><a href="{$Path}{Pages::MY_CALENDAR}">{translate key="MyCalendar"}</a></li>-->
+								<!--<li class="menuitem"><a href="{$Path}{Pages::CALENDAR}">{translate key="ResourceCalendar"}</a></li>-->
 							</ul>
 						</li>
 						{if $CanViewAdmin}
@@ -184,8 +189,13 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 								</ul>
 							</li>
 						{/if}
+						{if $LoggedIn}
+							<!--<li class="menubaritem"><a href="{Pages::PAYMENT}" class="paymentShow">{translate key="Payment"}</a></li>-->
+							<li class="menubaritem"><a href="{$Path}logout.php">{translate key="SignOut"}</a></li>
+						{/if}
+
 					{/if}
-					<li class="menubaritem help"><a href="{$Path}help.php">{translate key=Help}</a>
+					<!--<li class="menubaritem help"><a href="{$Path}help.php">{translate key=Help}</a>
 						<ul>
 							<li><a href="{$Path}help.php">{translate key=Help}</a></li>
 							{if $CanViewAdmin}
@@ -193,7 +203,7 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 							{/if}
 							<li><a href="{$Path}help.php?ht=about">{translate key=About}</a></li>
 						</ul>
-					</li>
+					</li>-->
 				</ul>
 			</div>
 			<!-- end #nav -->

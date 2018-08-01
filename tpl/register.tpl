@@ -48,59 +48,76 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 		<div id="registerLoginFields">
 			<div class="registrationHeader"><h3>{translate key=Login} ({translate key=AllFieldsAreRequired})</h3></div>
 			<p>
-				<label class="reg">{translate key="Username"}<br/>
+				<label class="reg">*{translate key="Username"}<br/>
 				{textbox name="LOGIN" class="input" value="Login" size="20"}
 				</label>
 			</p>
 
 			<p>
-				<label class="reg">{translate key="Password"}<br/>
+				<label class="reg">*{translate key="Password"}(至少六碼)<br/>
 				{textbox type="password" name="PASSWORD" class="input" value="" size="20"}
 				</label>
 			</p>
 
 			<p>
-				<label class="reg">{translate key="PasswordConfirmation"}<br/>
+				<label class="reg">*{translate key="PasswordConfirmation"}<br/>
 				{textbox type="password" name="PASSWORD_CONFIRM" class="input" value="" size="20"}
 				</label>
 			</p>
 
-			<p>
-				<label class="reg">{translate key="DefaultPage"}<br/>
+			<input type="hidden" name="defaultHomepage" value="2"><!--預設默認主頁改為時間表且改用隱藏預設，讓使用者一註冊完即可進到預約畫面-->
+			<!--<p>
+				<label class="reg">*{translate key="DefaultPage"}<br/>
 					<select {formname key='DEFAULT_HOMEPAGE'} class="input">
 					{html_options values=$HomepageValues output=$HomepageOutput selected=$Homepage}
 					</select>
 				</label>
-			</p>
+			</p>-->
 		</div>
 
 		<div id="registerProfileFields">
 			<div class="registrationHeader"><h3>{translate key=Profile} ({translate key=AllFieldsAreRequired})</h3></div>
 			<p>
-				<label class="reg">{translate key="FirstName"}<br/>
+				<label class="reg">*{translate key="LastName"}<br/>
+				{textbox name="LAST_NAME" class="input" value="LastName" size="20"}
+				</label>
+			</p>
+            
+			<p>
+				<label class="reg">*{translate key="FirstName"}<br/>
 				{textbox name="FIRST_NAME" class="input" value="FirstName" size="20"}
 				</label>
 			</p>
 
-			<p>
-				<label class="reg">{translate key="LastName"}<br/>
-				{textbox name="LAST_NAME" class="input" value="LastName" size="20"}
-				</label>
-			</p>
 
 			<p>
-				<label class="reg">{translate key="Email"}<br/>
+				<label class="reg">*{translate key="Email"}<br/>
 				{textbox name="EMAIL" class="input" value="Email" size="20"}
 				</label>
 			</p>
-
-			<p>
+            
+            <!--自訂屬性移至這-->
+            {if $Attributes|count > 0}
+                <div id="registerAttributeFields">
+                    <!--<div class="registrationHeader"><h3>{translate key=AdditionalAttributes}</h3></div>-->
+                    {foreach from=$Attributes item=attribute}
+                        <p class="customAttribute">
+                            *{control type="AttributeControl" attribute=$attribute}
+                        </p>
+                    {/foreach}
+                </div>
+            {/if}
+			
+            <p style="font-size:16px;">我同意 青年創業圓夢網 <a href="https://sme.moeasmea.gov.tw/startup/modules/aboutus/useragreement.php" target="_blank" title="連結:服務條款">服務條款</a>和<a href="https://sme.moeasmea.gov.tw/startup/modules/aboutus/privacy.php" target="_blank" title="連結:隱私權">隱私權</a></p>
+            
+            <input type="hidden" name="timezone" value="Asia/Taipei"><!--系統時間預設台北但下拉選單停在上海，故改用隱藏預設-->
+			<!--<p>
 				<label class="reg">{translate key="Timezone"}<br/>
 					<select {formname key='TIMEZONE'} class="input" id="timezoneDropDown">
 					{html_options values=$TimezoneValues output=$TimezoneOutput selected=$Timezone}
 					</select>
 				</label>
-			</p>
+			</p>-->
 
 			<p style="display:none">
 				<label class="reg">{translate key="Language"}<br/>
@@ -133,8 +150,9 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 				</label>
 			</p>
 		</div>
-
-	{if $Attributes|count > 0}
+        
+	<!--自訂屬性移到必填區域-->
+	<!--{if $Attributes|count > 0}
 		<div id="registerAttributeFields">
 			<div class="registrationHeader"><h3>{translate key=AdditionalAttributes}</h3></div>
 			{foreach from=$Attributes item=attribute}
@@ -143,7 +161,7 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 				</p>
 			{/foreach}
 		</div>
-	{/if}
+	{/if}-->
 
 	{if $EnableCaptcha}
 		<div class="registrationHeader"><h3>{translate key=SecurityCode}</h3></div>

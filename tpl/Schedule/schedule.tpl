@@ -97,7 +97,7 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 </div>
 
 {block name="schedule_control"}
-	<div>
+	<div style=" position:relative;">
 		<div class="schedule_title">
 			<span>{$ScheduleName}</span>
 			{if $Schedules|@count gt 0}
@@ -134,6 +134,34 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 		{/capture}
 
 		{$smarty.capture.date_navigation}
+        
+		<style>
+        #my_zone { position: absolute; right: 0%; top: 10px; }
+        #my_zone2 { display: none; margin-bottom: 10px; }
+		.my_notice {
+			font-size: 14px;
+			font-family: Helvetica, "Helvetica Neue", "Lucida Grande", Verdana, Arial, sans-serif;
+			color: #333333;
+			letter-spacing: 1px;
+			padding: 6px 6px; 
+			border: 1px solid #C7C9BE; 
+            border-radius: 8px; 
+            background-color: #F4F5ED;
+		}
+        @media only screen and (max-width: 768px) {
+            #my_zone { display: none; }
+            #my_zone2 { display: block; }
+        }
+        </style>
+        <div id="my_zone" class="my_notice">
+        	本系統僅提供預約14:00-17:00<br>
+            拜會說明和行事曆可參見<a href="http://silofficehour.pdis.tw" target="_blank" title="連結：唐鳳都在這行事曆">http://silofficehour.pdis.tw</a><br>
+            實際情況仍以現場為準，敬請見諒 
+        </div>	
+        <div id="my_zone2" class="my_notice">
+            本系統僅提供預約14:00-17:00 拜會說明和行事曆可參見<a href="http://silofficehour.pdis.tw" target="_blank" title="連結：唐鳳都在這行事曆">http://silofficehour.pdis.tw</a> 實際情況仍以現場為準，敬請見諒 
+        </div>	
+        
 	</div>
 	<div type="text" id="datepicker" style="display:none;"></div>
 {/block}

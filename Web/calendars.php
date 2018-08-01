@@ -17,8 +17,7 @@ You should have received a copy of the GNU General Public License
 along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-die('To use this file, please remove this line from source');
-
+//die('To use this file, please remove this line from source');
 require_once('../config/config.php');
 
 ## use parameters in config/config
@@ -28,6 +27,8 @@ $username = $conf['settings']['database']['user'];
 $password = $conf['settings']['database']['password'];
 $database = $conf['settings']['database']['name'];
 $icskey   = $conf['settings']['ics']['subscription.key'];
+//echo "\$conf['settings']=".'<pre>',print_r($conf['settings']),'</pre><hr>';
+//echo "\$conf['settings']['ics']['subscription.key']=".$icskey.'<hr>';
 $tab = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 
 header("Exported calendars of Booked Scheduler");
@@ -89,7 +90,7 @@ while ($srow = mysql_fetch_assoc($schedule)) {
 
     // Get Urls for resource calendars
     $result = mysql_query('SELECT public_id, name, contact_info, allow_calendar_subscription  FROM '.$database.'.resources WHERE schedule_id = '.mysql_real_escape_string($srow['id']).' ORDER BY name ');
-    while ($rrow = mysql_fetch_assoc($result)) {
+	while ($rrow = mysql_fetch_assoc($result)) {
         $rid     = $rrow['public_id'];
         $name    = $rrow['name'];
         $contact = $rrow['contact_info'];

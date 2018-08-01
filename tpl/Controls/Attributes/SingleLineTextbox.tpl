@@ -16,12 +16,12 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 *}
-<label class="customAttribute" for="{$attributeId}">{$attribute->Label()}:</label>
+<label class="customAttribute reg" for="{$attributeId}">{$attribute->Label()}</label>
 {if $align=='vertical'}
 <br/>
 {/if}
 {if $readonly}
 <span class="attributeValue {$class}">{$attribute->Value()}</span>
 {else}
-<input type="text" id="{$attributeId}" name="{$attributeName}" value="{$attribute->Value()}" class="customAttribute textbox {$class}" />
+<input type="text" id="{$attributeId}" name="{$attributeName}" value="{$attribute->Value()}" class="customAttribute textbox input {$class}" />
 {/if}

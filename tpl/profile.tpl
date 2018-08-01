@@ -59,23 +59,23 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 		<div id="profileProfileFields">
 			<div class="registrationHeader"><h3>{translate key=Profile} ({translate key=AllFieldsAreRequired})</h3></div>
 			<p>
-				<label class="reg">{translate key="FirstName"}<br/>
-					{if $AllowNameChange}
-						{textbox name="FIRST_NAME" class="input" value="FirstName" size="20"}
-					{else}
-						<span>{$FirstName}</span>
-						<input type="hidden" {formname key=FIRST_NAME} value="{$FirstName}"/>
-					{/if}
-				</label>
-			</p>
-
-			<p>
 				<label class="reg">{translate key="LastName"}<br/>
 					{if $AllowNameChange}
 						{textbox name="LAST_NAME" class="input" value="LastName" size="20"}
 					{else}
 						<span>{$LastName}</span>
 						<input type="hidden" {formname key=LAST_NAME} value="{$LastName}"/>
+					{/if}
+				</label>
+			</p>
+            
+			<p>
+				<label class="reg">{translate key="FirstName"}<br/>
+					{if $AllowNameChange}
+						{textbox name="FIRST_NAME" class="input" value="FirstName" size="20"}
+					{else}
+						<span>{$FirstName}</span>
+						<input type="hidden" {formname key=FIRST_NAME} value="{$FirstName}"/>
 					{/if}
 				</label>
 			</p>
@@ -90,6 +90,18 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 					{/if}
 				</label>
 			</p>
+            
+            <!--自訂屬性移至這-->
+            {if $Attributes|count > 0}
+                <div id="profileAttributeFields">
+                   <!-- <div class="registrationHeader"><h3>{translate key=AdditionalAttributes}</h3></div>-->
+                    {foreach from=$Attributes item=attribute}
+                        <p class="customAttribute">
+                            *{control type="AttributeControl" attribute=$attribute}
+                        </p>
+                    {/foreach}
+                </div>
+            {/if}
 
 			<p>
 				<label class="reg">{translate key="Timezone"}<br/>
@@ -135,8 +147,9 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 				</label>
 			</p>
 		</div>
-
-		{if $Attributes|count > 0}
+		
+        <!--自訂屬性移到必填區域-->
+		<!--{if $Attributes|count > 0}
 			<div id="profileAttributeFields">
 				<div class="registrationHeader"><h3>{translate key=AdditionalAttributes}</h3></div>
 				{foreach from=$Attributes item=attribute}
@@ -145,7 +158,7 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 					</p>
 				{/foreach}
 			</div>
-		{/if}
+		{/if}-->
 
 		<p class="regsubmit">
 			<button type="button" class="button update" name="{Actions::SAVE}" id="btnUpdate">

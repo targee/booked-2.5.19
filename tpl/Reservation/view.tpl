@@ -106,7 +106,7 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 						{/if}
 					</li>
 
-					<li>
+					<li style="display:none;">
 						<label>{translate key='ReservationDescription'}</label>
 						{if $Description neq ''}
 							<br/>{$Description|nl2br}
@@ -114,6 +114,22 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 							<span class="no-data">{translate key='None'}</span>
 						{/if}
 					</li>
+                    
+					<!--附加屬性(新位置 隱藏html標籤)-->
+                    {if $Attributes|count > 0}
+                        <!--<div class="customAttributes">
+                            <span>{translate key=AdditionalAttributes}</span>
+                            <ul>-->
+                            {foreach from=$Attributes item=attribute}
+                                <li class="customAttribute">
+                                    {control type="AttributeControl" attribute=$attribute readonly=true}
+                                </li>
+                            {/foreach}
+                            <!--</ul>
+                        </div>
+                        <div style="clear:both;">&nbsp;</div>-->
+                    {/if}
+                    
 				{/if}
 			</ul>
 		</div>
@@ -181,19 +197,8 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 		<div style="clear:both;">&nbsp;</div>
 
 		{if $ShowReservationDetails}
-			{if $Attributes|count > 0}
-			<div class="customAttributes">
-				<span>{translate key=AdditionalAttributes}</span>
-				<ul>
-				{foreach from=$Attributes item=attribute}
-					<li class="customAttribute">
-						{control type="AttributeControl" attribute=$attribute readonly=true}
-					</li>
-				{/foreach}
-				</ul>
-			</div>
-			<div style="clear:both;">&nbsp;</div>
-			{/if}
+        	<!--附加屬性(原本位置)-->
+
 		{/if}
 
 		{if $ShowReservationDetails}

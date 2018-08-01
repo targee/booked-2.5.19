@@ -142,11 +142,11 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
                 <span id="durationHours">0</span> {translate key=hours}
             </div>
         </li>
-	{if $HideRecurrence}
+	{if $HideRecurrence == false}
         <li style="display:none">
 	{else}
 		<li>
-		{control type="RecurrenceControl" RepeatTerminationDate=$RepeatTerminationDate}
+		<!--{control type="RecurrenceControl" RepeatTerminationDate=$RepeatTerminationDate}-->
 	{/if}
 	</li>
 
@@ -156,12 +156,60 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 			{textbox name="RESERVATION_TITLE" class="input" tabindex="100" value="ReservationTitle"}
             </label>
         </li>
-        <li class="rsv-box-l">
+        <li class="rsv-box-l" style="display:none;">
             <label>{translate key="ReservationDescription"}<br/>
-                <textarea id="description" name="{FormKeys::DESCRIPTION}" class="input" rows="2" cols="52"
-                          tabindex="110">{$Description}</textarea>
+                <textarea id="description" name="{FormKeys::DESCRIPTION}" class="input" rows="5" cols="52"tabindex="110"></textarea>
             </label>
         </li>
+        
+        <!--附加屬性(新位置 隱藏html標籤)-->
+        {if $Attributes|count > 0}
+            <!--<div class="customAttributes">
+                <span>{translate key=AdditionalAttributes}</span>
+                <ul>-->
+                    {foreach from=$Attributes item=attribute}
+                        <li class="customAttribute">
+                            {control type="AttributeControl" attribute=$attribute}
+                        </li>
+                    {/foreach}
+                <!--</ul>
+            </div>
+        
+            <div class="clear">&nbsp;</div>-->
+            
+            <!--唐鳳都在這-->
+            {if $ResourceId == 64 || $ResourceId == 65}
+				<script>
+                $(function(){
+                    $('#reservationTitle').val('預約申請');
+                    //$('#psiattribute3').val('免填').parent().hide();
+                    //$('#psiattribute4').val('免填').parent().hide();
+                });
+                </script>
+            {/if}
+            
+        {/if}
+        
+        <!--檔案上傳-->
+        {if $UploadsEnabled}
+            <!--<div class="reservationAttachments">
+                <ul>
+                    <li>-->
+                        <label>{translate key=AttachFile} <span class="note">({$MaxUploadSize}
+                                MB {translate key=Maximum})</span><br/> </label>
+                        <ul style="list-style:none;" id="reservationAttachments">
+							<li class="attachment-item">
+                                <input type="file" {formname key=RESERVATION_FILE multi=true} />
+                                <!--隱藏新增"上傳欄位"-->
+                                <!--<a class="add-attachment" href="#">{html_image src="plus-button.png"}</a>
+                                <a class="remove-attachment" href="#">{html_image src="minus-gray.png"}</a>-->
+                            </li>
+                        </ul>
+                    <!--</li>
+                </ul>
+            </div>-->
+        {/if}
+        
     </ul>
 </div>
 
@@ -202,39 +250,9 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 	</div>
 {/if}
 
-{if $Attributes|count > 0}
-<div class="customAttributes">
-    <span>{translate key=AdditionalAttributes}</span>
-    <ul>
-		{foreach from=$Attributes item=attribute}
-            <li class="customAttribute">
-				{control type="AttributeControl" attribute=$attribute}
-            </li>
-		{/foreach}
-    </ul>
-</div>
+<!--附加屬性(原本位置)-->
 
-	<div class="clear">&nbsp;</div>
-{/if}
-
-{if $UploadsEnabled}
-	<div class="reservationAttachments">
-		<ul>
-			<li>
-				<label>{translate key=AttachFile} <span class="note">({$MaxUploadSize}
-						MB {translate key=Maximum})</span><br/> </label>
-				<ul style="list-style:none;" id="reservationAttachments">
-					<li class="attachment-item">
-						<input type="file" {formname key=RESERVATION_FILE multi=true} />
-						<a class="add-attachment" href="#">{html_image src="plus-button.png"}</a>
-						<a class="remove-attachment" href="#">{html_image src="minus-gray.png"}</a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-{/if}
-
+<!--檔案上傳(原本位置)-->
 
 <input type="hidden" {formname key=reservation_id} value="{$ReservationId}"/>
 <input type="hidden" {formname key=reference_number} value="{$ReferenceNumber}"/>
@@ -380,6 +398,7 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
             groupAutocompleteUrl:"ajax/autocomplete.php?type={AutoCompleteType::Group}",
             changeUserAutocompleteUrl:"ajax/autocomplete.php?type={AutoCompleteType::MyUsers}",
 			maxConcurrentUploads:'{$MaxUploadCount}'
+			//maxConcurrentUploads:1
         };
 
         var recurOpts = {

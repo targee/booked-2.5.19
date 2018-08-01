@@ -49,6 +49,9 @@ class Pages
 	const RESERVATION_FILE = 'reservation-file.php';
 	const REGISTRATION = 'register.php';
 	const SCHEDULE = 'schedule.php';
+	
+	//==社創中心需求的主選單==
+	const PAYMENT = 'javascript: void(0);';
 
 	private static $_pages = array(
 		1 => array('url' => Pages::DASHBOARD, 'name' => 'MyDashboard'),

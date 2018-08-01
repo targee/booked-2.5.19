@@ -220,10 +220,8 @@ class zh_tw extends en_us
         $strings['PasswordChangedSuccessfully'] = '您的密碼已成功更新';
         $strings['SignedInAs'] = '登入為';
         $strings['NotSignedIn'] = '您還未登入';
-        //$strings['ReservationTitle'] = '預約名稱';
-        //$strings['ReservationDescription'] = '預約說明';
-        $strings['ReservationTitle'] = '名稱';
-        $strings['ReservationDescription'] = '活動說明';
+        $strings['ReservationTitle'] = '預約名稱';
+        $strings['ReservationDescription'] = '預約說明';
         $strings['ResourceList'] = '待預約資源';
         $strings['Accessories'] = '設備/附件';        
         $strings['ParticipantList'] = '參與者';
@@ -242,8 +240,8 @@ class zh_tw extends en_us
         $strings['Email'] = '電子郵件';
         $strings['EmailAddress'] = '電子郵寄地址';
         $strings['Phone'] = '電話';
-        $strings['Organization'] = '單位網站';
-        $strings['Position'] = '臉書社群';
+        $strings['Organization'] = '組織';
+        $strings['Position'] = '位置';
         $strings['Language'] = '語言';
         $strings['Permissions'] = '許可';
         $strings['Reset'] = '重置';
@@ -391,8 +389,7 @@ class zh_tw extends en_us
 		$strings['ActivationEmailSent'] = '您會立即收到一封有關啟動的電子郵件.';
 		$strings['AccountActivationError'] = '對不起，我們不能啟動您的帳號.';
 		$strings['Attachments'] = '附件';
-		//$strings['AttachFile'] = '附件檔';
-		$strings['AttachFile'] = '拜會相關資料(供政委預先了解拜會事宜用(選填))';
+		$strings['AttachFile'] = '附件檔';
 		$strings['Maximum'] = '最大值';
   		$strings['NoScheduleAdministratorLabel'] = '沒有時間表管理員';
 		$strings['ScheduleAdministrator'] = '時間表管理員';
@@ -516,9 +513,9 @@ class zh_tw extends en_us
         $strings['StartIsInPast'] = '開始時間和日期必須比當前時間晚';
         $strings['EmailDisabled'] = '管理員已經禁止了郵件提醒';
         $strings['ValidLayoutRequired'] = '時間間隔必須提供全天24小時而且必須從上午12時開始並結束於上午12時.';
-        $strings['CustomAttributeErrors'] = '您的必填欄位出了問題:';
+        $strings['CustomAttributeErrors'] = '您提供的附加屬性出了問題:';
         $strings['CustomAttributeRequired'] = '%s 是必填項目';
-        $strings['CustomAttributeInvalid'] = '%s 的內容要符合格式';
+        $strings['CustomAttributeInvalid'] = '提供給 %s 的內容是有效的.';
         $strings['AttachmentLoadingError'] = '對不起，在載入檔時發現了一個問題.';
         $strings['InvalidAttachmentExtension'] = '您只能上傳這些類型的檔: %s';
 		$strings['InvalidStartSlot'] = '開始時間和日期不正確';

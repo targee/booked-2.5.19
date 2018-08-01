@@ -20,19 +20,26 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 	<h4>{$resourceName}</h4>
 
 	<div style="clear"></div>
-	{if $imageUrl neq ''}
+	<!--{if $imageUrl neq ''}
 		<div class="resourceImage">
 			<img style="max-height:200px; max-width:200px;" src="{$imageUrl}" alt="{$resourceName|escape}"/>
 		</div>
-	{/if}
+	{/if}-->
 	<div class="description">
-		<span class="bold">{translate key=Description}</span>
-		{if $description neq ''}
+		{if $imageUrl neq ''}
+            <div class="resourceImage">
+                <img style="max-height:300px; max-width:290px;" src="{$imageUrl}" alt="{$resourceName|escape}"/>
+            </div>
+            <div style="clear:both;"></div>
+		{/if}
+		<span class="bold"><{translate key=Description}></span>
+		<br>
+        {if $description neq ''}
 			{$description|html_entity_decode|url2link|nl2br}
 		{else}
 			{translate key=NoDescriptionLabel}
 		{/if}
-		<br/>
+		<!--<br/>
 		<span class="bold">{translate key=Notes}</span>
 		{if $notes neq ''}
 			{$notes|html_entity_decode|url2link|nl2br}
@@ -59,9 +66,9 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 			{$resourceType}
 		{else}
 			{translate key=NoResourceTypeLabel}
-		{/if}
+		{/if}-->
 	</div>
-	<div class="attributes">
+	<!--<div class="attributes">
 		<ul>
 			<li>
 				{if $minimumDuration neq ''}
@@ -128,6 +135,6 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 			{/if}
 
 		</ul>
-	</div>
+	</div>-->
 	<div style="clear"></div>
 </div>

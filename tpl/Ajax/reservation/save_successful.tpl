@@ -24,8 +24,8 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 	{/if}
 	<br/>
 	<div class="createdMessage">{translate key=ReservationCreated}</div>
-	<div class="referenceNumber">{translate key=YourReferenceNumber args=$ReferenceNumber}</div>
-
+	<!--<div class="referenceNumber">{translate key=YourReferenceNumber args=$ReferenceNumber}</div>-->
+	
 	<div class="dates">
 		{foreach from=$Instances item=instance name=date_list}
 			<span class="date">{format_date date=$instance->StartDate() timezone=$Timezone}{if !$smarty.foreach.date_list.last}, {/if}</span>
@@ -40,9 +40,13 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 	</div>
 
 	{if $RequiresApproval}
-		<div class="approvalMessage">{translate key=ReservationRequiresApproval}</div>
+		<!--<div class="approvalMessage">{translate key=ReservationRequiresApproval}</div>-->
 	{/if}
-
-	<input type="button" id="btnSaveSuccessful" value="{translate key='Close'}" class="button" />
+	<!--<p><img src="../Web/img/payment.png"><br><span style="font-size:18px;">{translate key="Payment"} QR Code</span></p><br>-->
+    <div class="referenceNumber" style="font-size:18px; letter-spacing:1px; line-height:150%;">
+		場地使用切結書請以Email方式處理或直接活動前十分鐘到辦公室簽名<br><span style="color:red;">(*<strong>如借用場地人未到場，則停權一個月</strong>)</span>
+    </div>
+    <div class="referenceNumber" style="font-size:18px; letter-spacing:1px; line-height:150%;">若有任何疑問，請洽營運服務中心<br>電話：(02)6631-5055；<br>服務信箱:socialinnovationlab1018@gmail.com</div>
+	<br><input type="button" id="btnSaveSuccessful" value="{translate key='Close'}" class="button" />
 
 </div>

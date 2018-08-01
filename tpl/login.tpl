@@ -70,10 +70,14 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 			<a href="{$RegisterUrl}" {$RegisterUrlNew}>{translate key='CreateAnAccount'}</a>
 		</h4>
 	{/if}
+    <!--新增聯絡方式-->
+    <br>
+    <p>聯絡電話:(02)6631-5055</p>
+    <p>聯絡信箱:<a href="mailto:socialinnovationlab1018@gmail.com">socialinnovationlab1018@gmail.com</a></p>
 	</form>
 </div>
 
-<div id="login-links">
+<!--<div id="login-links">
 	<p>
 		{if $ShowScheduleLink}
 		<a href="view-schedule.php">{translate key='ViewSchedule'}</a>
@@ -83,7 +87,7 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 			<a href="{$ForgotPasswordUrl}" {$ForgotPasswordUrlNew}>{translate key='ForgotMyPassword'}</a>
 		{/if}
 	</p>
-</div>
+</div>-->
 
 {setfocus key='EMAIL'}
 

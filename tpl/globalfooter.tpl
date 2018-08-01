@@ -21,8 +21,22 @@ along with Booked Scheduler.  If not, see <http://www.gnu.org/licenses/>.
 	<div class="push">&nbsp;</div>
 	</div><!-- close wrapper-->
 
+<!--繳費用跳出視窗-->
+<!--<script>
+$(function(){
+	$(".paymentShow").click(function(){
+		$("#paymentDialog").dialog({
+			modal: true
+		});
+	});
+});
+</script>
+<div id="paymentDialog" class="dialog" title="{translate key=Payment}">
+<center><img src="../Web/img/payment.png"></center>
+</div>-->
+
     	<div class="page-footer">
-			&copy; 2016 <a href="http://www.twinkletoessoftware.com">Twinkle Toes Software</a> <br/><a href="http://www.bookedscheduler.com">Booked Scheduler v{$Version}</a>
+			財團法人資訊工業策進會-數位教育研究所<br/>Institute for Information Industry. Digital Education Institute.<!--&copy; 2016 <a href="http://www.twinkletoessoftware.com">Twinkle Toes Software</a> <br/><a href="http://www.bookedscheduler.com">Booked Scheduler v{$Version}</a>-->
     	</div>
 
 	{if !empty($GoogleAnalyticsTrackingId)}
